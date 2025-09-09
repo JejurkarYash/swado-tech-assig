@@ -1,0 +1,19 @@
+CREATE TABLE students (
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(100) NOT NULL,
+	email VARCHAR(100) UNIQUE NOT NULL
+);
+
+CREATE TABLE courses (
+	id SERIAL PRIMARY KEY,
+	course_name VARCHAR(100) NOT NULL,
+	duration VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE enrollments (
+	id SERIAL PRIMARY KEY,
+	student_id INTEGER NOT NULL,
+	course_id INTEGER NOT NULL,
+	FOREIGN KEY (student_id) REFERENCES students(id) ON DELETE CASCADE,
+	FOREIGN KEY (course_id) REFERENCES courses(id) ON DELETE CASCADE
+);
