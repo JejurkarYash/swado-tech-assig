@@ -6,10 +6,12 @@ import dotenv from 'dotenv';
 import db from "./db.ts";
 import { migrate } from "./migrate.ts";
 import { studentSchema, courseSchema, studentIdSchema, enrollStudentSchema } from "./zod/index.ts";
-import { ZodError } from 'zod';
+import { ZodError } from "zod";
+import cors from "cors";
 dotenv.config();
 const app = express();
 
+app.use(cors());
 
 // json parser 
 app.use(express.json());
